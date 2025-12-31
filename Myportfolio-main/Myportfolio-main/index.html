@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kasala Pavan Sai | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Add any inline styles for skills and layout here */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .skill-card,
+        .language-item,
+        .strength-item {
+            flex: 1 1 260px;
+            background: rgba(99, 102, 241, 0.14);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .skill-card i,
+        .language-item i,
+        .strength-item i {
+            color: #6366f1;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .skill-details,
+        .language-details,
+        .strength-details {
+            color: #bcbcbc;
+            font-size: 0.95rem;
+        }
+
+        .skill-title,
+        .language-name,
+        .strength-name {
+            font-weight: 600;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Kasala Pavan Sai</a>
+            <nav style="display: flex; align-items: center;">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+                <div style="display: flex; align-items: center; margin-left: auto;">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"
+                        style="margin-right: 10px;">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container" style="display: flex; align-items: center; gap: 2rem; max-width: 1000px;">
+            <div class="hero-content">
+                <h1 class="hero-title">Kasala Pavan Sai</h1>
+                <h2 class="hero-subtitle">Full-stack Developer & AI/ML Student</h2>
+                <div class="typed-text" id="typed-text">Passionate about <span id="changing-text">Artificial
+                        Intelligence</span></div>
+                <p class="animate-fadeInUp delay-3">Building innovative solutions with AI and Machine Learning to solve
+                    real-world problems.</p>
+                <div class="hero-cta animate-fadeInUp delay-4">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="projects.html" class="btn btn-outline">See My Work</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image-container">
+                    <img src="profile.jpg" alt="Kasala Pavan Sai" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card animate-fadeInUp">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Profile Details</h3>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td><strong>Phone No:</strong></td>
+                                <td>+91 7013532995</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>pavankasala999@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Location:</strong></td>
+                                <td>Tirupati, Andhra Pradesh</td>
+                            </tr>
+                        </table>
+                        <h3 style="margin-top: 1.5rem;">About Me</h3>
+                        <p>
+                            I am a full-stack developer skilled in Python, Java, and web technologies. Currently
+                            pursuing B.Tech in Computer Science and Engineering (AI & ML), passionate about building
+                            intuitive user-centric solutions.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Hobbies & Interests</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Exploring AI and ML applications</li>
+                            <li>Playing and watching cricket</li>
+                            <li>Listening to music and movies</li>
+                            <li>Travelling and cultural exploration</li>
+                            <li>Coding and experimenting with new Python modules</li>
+                        </ul>
+                        <h3 style="margin-top: 1.5rem;">Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                                target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="card animate-fadeInUp">
+
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <div class="skill-title">Python Development</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-brain"></i>
+                        <div class="skill-title">Machine Learning</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-network-wired"></i>
+                        <div class="skill-title">Deep Learning</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <div class="skill-title">MySQL</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <div class="skill-title">Web Development</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <div class="skill-title">Data Visualization</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-java"></i>
+                        <div class="skill-title">Core JAVA</div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <div class="skill-title">DSA in Java</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Languages</h3>
+                <div class="skills-grid">
+                    <div class="language-item">
+                        <i class="fas fa-comments"></i>
+                        <div class="language-name">Telugu</div>
+                        <div class="language-details">Mother Tongue - Native Proficiency</div>
+                    </div>
+                    <div class="language-item">
+                        <i class="fas fa-language"></i>
+                        <div class="language-name">English</div>
+                        <div class="language-details">Proficient in speaking & writing</div>
+                    </div>
+                    <div class="language-item">
+                        <i class="fas fa-headphones"></i>
+                        <div class="language-name">Hindi</div>
+                        <div class="language-details">Proficient in speaking & writing</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Strengths</h3>
+                <div class="skills-grid">
+                    <div class="strength-item">
+                        <i class="fas fa-bolt"></i>
+                        <div class="strength-name">Quick Learner</div>
+                        <div class="strength-description">Ability to grasp new concepts and technologies rapidly</div>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <div class="strength-name">Problem-Solving</div>
+                        <div class="strength-description">Analytical approach to solving complex problems</div>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <div class="strength-name">Adaptability</div>
+                        <div class="strength-description">Flexible in changing environments and requirements</div>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-users"></i>
+                        <div class="strength-name">Leadership</div>
+                        <div class="strength-description">Ability to guide and motivate teams effectively</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Quicklinks -->
+    <section class="section" style="background-color: rgba(99, 102, 241, 0.05);">
+        <div class="container">
+            <h2 class="section-title">Explore My Portfolio</h2>
+            <div class="projects-grid">
+                <a href="education.html" class="card animate-fadeInUp delay-1"
+                    style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Education</h3>
+                        <p>My academic journey and achievements</p>
+                    </div>
+                </a>
+                <a href="projects.html" class="card animate-fadeInUp delay-3"
+                    style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Projects</h3>
+                        <p>Showcase of my technical projects</p>
+                    </div>
+                </a>
+                <a href="achievements.html" class="card animate-fadeInUp delay-5"
+                    style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-trophy" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Achievements</h3>
+                        <p>Awards and recognition received</p>
+                    </div>
+                </a>
+                <a href="certifications.html" class="card animate-fadeInUp delay-6"
+                    style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Certifications</h3>
+                        <p>Professional certifications and courses</p>
+                    </div>
+                </a>
+                <a href="remain/certificates.html" class="card animate-fadeInUp delay-2"
+                    style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <i class="fas fa-code" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 1rem;">Certificates</h3>
+                        <p>Technical skills and competencies</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="card animate-fadeInUp">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-envelope"></i> pavankasala999@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +91 7013532995</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</p>
+                        <div class="social-links" style="margin-top: 1.5rem;">
+                            <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                                target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <form>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="name" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                                <input type="text" id="name"
+                                    style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                                <input type="email" id="email"
+                                    style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="message" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                                <textarea id="message" rows="4"
+                                    style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #e2e8f0;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                    <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                        <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                        <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                        <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                        <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a>
+                        </li>
+                        <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

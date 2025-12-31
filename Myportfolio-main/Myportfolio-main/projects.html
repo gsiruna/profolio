@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects – Kasala Pavan Sai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .projects-section {
+            padding: var(--spacing-2xl) 0;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+        .project-card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-card-image img {
+            transform: scale(1.1);
+        }
+        .project-emoji {
+            position: absolute;
+            bottom: -25px;
+            left: 20px;
+            height: 50px;
+            width: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover .project-emoji {
+            transform: scale(1.1) rotate(10deg);
+        }
+        .project-card-content {
+            padding: 2rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .project-card:hover .project-card-title {
+            color: var(--primary);
+        }
+        .project-card-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+        .project-card-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .project-card-technology {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover .project-card-technology {
+            background: rgba(99, 102, 241, 0.2);
+        }
+        .project-card-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+        .project-card-link-text {
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        .project-card-link-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover .project-card-link-text {
+            color: var(--primary-dark);
+        }
+        .project-card:hover .project-card-link-icon {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .filter-button {
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            border: none;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--text-primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-button:hover, .filter-button.active {
+            background: var(--primary);
+            color: white;
+        }
+        /* Dark theme adjustments */
+        .dark-theme .project-card {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .dark-theme .project-card-link {
+            border-top-color: rgba(255, 255, 255, 0.05);
+        }
+        .dark-theme .project-card-technology {
+            background: rgba(99, 102, 241, 0.15);
+        }
+        .dark-theme .filter-button {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Kasala Pavan Sai</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title animate-fadeInUp">My Projects</h1>
+                <p class="section-subtitle animate-fadeInUp delay-1">Explore my work in Web Development, AI/ML, and Data Handling</p>
+            </div>
+            
+            <div class="filter-container animate-fadeInUp delay-2">
+                <button class="filter-button active" data-filter="all">All Projects</button>
+                <button class="filter-button" data-filter="web">Web Development</button>
+                <button class="filter-button" data-filter="ai-ml">AI & ML</button>
+                <button class="filter-button" data-filter="python">Python</button>
+            </div>
+            
+            <div class="projects-grid">
+                <a href="https://github.com/Pavankasala/FarmTrak" class="project-card animate-fadeInUp delay-2" data-category="web">
+                    <div class="project-card-image">
+                        <img src="farmtrak-screenshot.png" alt="FarmTrak - Poultry Feed Recommendation App">
+                        <div class="project-emoji">🐔</div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">FarmTrak</h3>
+                        <p class="project-card-description">
+                            A modular, full-stack web app for poultry farmers, featuring flock tracking, health records, feed recommendations, and expense monitoring. 
+                            Built with React (Vite), Tailwind CSS, Spring Boot REST API, and H2 database. Includes authentication, session management, and dark/light themes.
+                        </p>
+                        <div class="project-card-technologies">
+                            <span class="project-card-technology">React (Vite)</span>
+                            <span class="project-card-technology">Spring Boot</span>
+                            <span class="project-card-technology">Tailwind CSS</span>
+                            <span class="project-card-technology">H2</span>
+                        </div>
+                        <div class="project-card-link">
+                            <span class="project-card-link-text">View on GitHub</span>
+                            <div class="project-card-link-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/Pavankasala/Age-Calaculator" class="project-card animate-fadeInUp delay-3" data-category="python">
+                    <div class="project-card-image">
+                        <img src="age-calculator-screenshot.png" alt="Precise Age Calculator">
+                        <div class="project-emoji">⏰</div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">Precise Age Calculator</h3>
+                        <p class="project-card-description">
+                            A Python script that calculates exact age (years, months, days) from a date of birth, with leap year and edge-case handling.
+                            Useful for applications requiring accurate age-based logic.
+                        </p>
+                        <div class="project-card-technologies">
+                            <span class="project-card-technology">Python</span>
+                            <span class="project-card-technology">CLI</span>
+                        </div>
+                        <div class="project-card-link">
+                            <span class="project-card-link-text">View on GitHub</span>
+                            <div class="project-card-link-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/Pavankasala/Contact_Book" class="project-card animate-fadeInUp delay-4" data-category="python">
+                    <div class="project-card-image">
+                        <img src="contact-book-screenshot.png" alt="Contact Book Tool">
+                        <div class="project-emoji">📱</div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">Contact Book</h3>
+                        <p class="project-card-description">
+                            A command-line address book in Python for storing, updating, and searching contacts, with persistent data storage and dictionary-based search.
+                        </p>
+                        <div class="project-card-technologies">
+                            <span class="project-card-technology">Python</span>
+                            <span class="project-card-technology">CLI</span>
+                            <span class="project-card-technology">Data Storage</span>
+                        </div>
+                        <div class="project-card-link">
+                            <span class="project-card-link-text">View on GitHub</span>
+                            <div class="project-card-link-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/Pavankasala/RockpaperScissor" class="project-card animate-fadeInUp delay-5" data-category="python">
+                    <div class="project-card-image">
+                        <img src="rps-screenshot.png" alt="Rock-Paper-Scissors Game">
+                        <div class="project-emoji">✊</div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">Rock-Paper-Scissors Game</h3>
+                        <p class="project-card-description">
+                            A console-based Python game with live scoring, input validation, and randomized AI logic.
+                        </p>
+                        <div class="project-card-technologies">
+                            <span class="project-card-technology">Python</span>
+                            <span class="project-card-technology">Games</span>
+                        </div>
+                        <div class="project-card-link">
+                            <span class="project-card-link-text">View on GitHub</span>
+                            <div class="project-card-link-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#" class="project-card animate-fadeInUp delay-6" data-category="ai-ml">
+                    <div class="project-card-image">
+                        <img src="tfp.jpg" alt="Traffic Flow Prediction">
+                        <div class="project-emoji">📊</div>
+                    </div>
+                    <div class="project-card-content">
+                        <h3 class="project-card-title">Traffic Flow Prediction</h3>
+                        <p class="project-card-description">
+                            Research and hands-on analysis of traffic flow prediction using AI/ML/DL. Involves exploring datasets, data visualization, and testing
+                            beginner-friendly models for time-series forecasting and traffic pattern analysis.
+                        </p>
+                        <div class="project-card-technologies">
+                            <span class="project-card-technology">Python</span>
+                            <span class="project-card-technology">Data Analysis</span>
+                            <span class="project-card-technology">Machine Learning</span>
+                            <span class="project-card-technology">Research</span>
+                        </div>
+                        <div class="project-card-link">
+                            <span class="project-card-link-text">In Progress</span>
+                            <div class="project-card-link-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                    <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Contact</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                    <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                    <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

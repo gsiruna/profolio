@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Achievements - Kasala Pavan Sai</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .achievement-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+    }
+    .achievement-content {
+      padding: 1.5rem;
+      flex: 1;
+    }
+    .achievement-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+      padding-bottom: 0.75rem;
+    }
+    .achievement-description {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .achievement-meta {
+      color: var(--primary);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .achievement-meta i {
+      margin-right: 0.5rem;
+    }
+    .achievement-image-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .achievement-image {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .achievement-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+    }
+    .achievement-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .achievement-card {
+        flex-direction: row;
+      }
+      .achievement-content {
+        flex: 7;
+      }
+      .achievement-image-container {
+        flex: 3;
+        padding: 1.5rem;
+      }
+    }
+    @media (max-width: 767px) {
+      .achievement-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark-theme">
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">Kasala Pavan Sai</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="achievements.html" class="nav-link active">Achievements</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+    <div class="container">
+      <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Achievements & Awards</h1>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">
+        A showcase of my accomplishments, leadership roles, and recognition throughout my academic and professional journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="section">
+    <div class="container">
+
+      <!-- National Hackathon Participation -->
+      <div class="achievement-card animate-fadeInUp">
+        <div class="achievement-content">
+          <h2 class="achievement-title">National Hackathon Participation - VR Siddhartha</h2>
+          <p class="achievement-description">
+            Participated in National Hackathon at VR Siddhartha; developed innovative team-based tech solutions in a time-bound environment.
+          </p>
+        </div>
+        <div class="achievement-image-container">
+          <div class="achievement-image">
+            <img src="vrsiddharthahackathon.jpg" alt="National Hackathon at VR Siddhartha" />
+          </div>
+        </div>
+      </div>
+
+      <!-- NeoCodeathon Top Performer -->
+      <div class="achievement-card animate-fadeInUp delay-1">
+        <div class="achievement-content">
+          <h2 class="achievement-title">Top 25 Performer – 2025 NeoCodeathon Finals</h2>
+          <p class="achievement-description">
+            Selected as one of the Top 25 Finalists among 1000+ participants at the NeoCodeathon Finals, Mohan Babu University.
+          </p>
+        </div>
+        <div class="achievement-image-container">
+          <div class="achievement-image">
+            <img src="NeoCodeathonFinals.jpg" alt="NeoCodeathon 2025 Top 25 Performer" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Simulation Project -->
+      <div class="achievement-card animate-fadeInUp delay-2">
+        <div class="achievement-content">
+          <h2 class="achievement-title">3D Simulation Project in Unity</h2>
+          <p class="achievement-description">
+            Completed a confidential 3D simulation project in Unity involving spatial interaction, traffic-light simulation, and predefined assets to enhance decision-based scenarios.
+          </p>
+        </div>
+        <div class="achievement-image-container">
+          <div class="achievement-image">
+            <img src="traffic_lights.jpg" alt="3D Simulation Project Unity" />
+          </div>
+        </div>
+      </div>
+
+      <!-- School Cricket Captain -->
+      <div class="achievement-card animate-fadeInUp delay-3">
+        <div class="achievement-content">
+          <h2 class="achievement-title">Captain - School Cricket Tournament</h2>
+          <p class="achievement-description">
+            Led my school team as Captain, winning the finals through strong leadership, teamwork, and strategy in competitive tournaments.
+          </p>
+        </div>
+        <div class="achievement-image-container">
+          <div class="achievement-image">
+            <img src="won.png" alt="School Cricket Captain" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                    <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Contact</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                    <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                    <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

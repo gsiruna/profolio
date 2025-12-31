@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications - Kasala Pavan Sai</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../style.css">
+  
+  <style>
+    .certificate-section {
+      margin-bottom: 3rem;
+    }
+    
+    .company-header {
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .company-header i {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+    }
+    
+    .company-header h2 {
+      margin-bottom: 0;
+      font-size: 1.75rem;
+    }
+    
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .certificate-card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .certificate-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+    }
+    
+    .certificate-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .certificate-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .certificate-card:hover .certificate-image img {
+      transform: scale(1.05);
+    }
+    
+    .certificate-content {
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .certificate-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    
+    .certificate-date {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    
+    .certificate-date i {
+      margin-right: 0.35rem;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .modal-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary);
+    }
+    
+    /* Filter buttons */
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    
+    .filter-button {
+      padding: 0.5rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-button:hover, .filter-button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+
+<body class="dark-theme">
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="../index.html" class="logo">Kasala Pavan Sai</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../education.html" class="nav-link">Education</a></li>
+          <li><a href="../achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="../projects.html" class="nav-link">Projects</a></li>
+          <li><a href="../certifications.html" class="nav-link">Certifications</a></li>
+          <li><a href="certificates.html" class="nav-link active">Certificates</a></li>
+          <li><a href="../skills.html" class="nav-link">Skills</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+    <div class="container">
+      <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">My Certifications Archive</h1>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">A comprehensive collection of all the certifications I've earned through continuous learning and professional development.</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-container">
+        <button class="filter-button active" data-filter="all">All Certificates</button>
+        <button class="filter-button" data-filter="coursera">Coursera</button>
+        <button class="filter-button" data-filter="ibm">IBM</button>
+        <button class="filter-button" data-filter="python">Python</button>
+        <button class="filter-button" data-filter="other">Other Certifications</button>
+      </div>
+      
+  <!-- Python and Core Technology Certificates Section -->
+<div class="certificate-section" data-category="python">
+  <div class="company-header">
+    <i class="fab fa-python"></i>
+    <h2>Python & Core Technology Certifications</h2>
+  </div>
+  <div class="certificate-grid">
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/1418a4212f4081b31c8075ec78cd4c0b','_blank')">
+        <img src="Python for Everybody.jpg" alt="Python for Everybody (Michigan)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Python for Everybody</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> University of Michigan</p>
+        <a href="https://coursera.org/share/1418a4212f4081b31c8075ec78cd4c0b" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://www.credly.com/badges/f6181853-5dbd-4ed9-8c7f-d070826f0f24/public','_blank')">
+        <img src="pythonessentials1.png" alt="Python Essentials 1 (Cisco)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Python Essentials 1</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> Cisco</p>
+        <a href="https://www.credly.com/badges/f6181853-5dbd-4ed9-8c7f-d070826f0f24/public" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://www.credly.com/badges/2b10750f-cd57-4302-9335-ecd2bf9113ef/public_url','_blank')">
+        <img src="pythonessentials2.png" alt="Python Essentials 2 (Cisco)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Python Essentials 2</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> Cisco</p>
+        <a href="https://www.credly.com/badges/2b10750f-cd57-4302-9335-ecd2bf9113ef/public_url" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Coursera & Specialization Certificates Section -->
+<div class="certificate-section" data-category="coursera">
+  <div class="company-header">
+    <i class="fas fa-certificate"></i>
+    <h2>Coursera & Specialization Certifications</h2>
+  </div>
+  <div class="certificate-grid">
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/1eca512f2b77a359335e0bbd032520ec','_blank')">
+        <img src="Automating Image Processing.jpg" alt="Automating Image Processing (MathWorks)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Automating Image Processing</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> MathWorks</p>
+        <a href="https://coursera.org/share/1eca512f2b77a359335e0bbd032520ec" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://www.coursera.org/account/accomplishments/verify/KVSM2OMPAYOE','_blank')">
+        <img src="ML for CV.jpg" alt="ML for Computer Vision (MathWorks)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Machine Learning for Computer Vision</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> MathWorks</p>
+        <a href="https://www.coursera.org/account/accomplishments/verify/KVSM2OMPAYOE" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/d0458ddce82d3ec145adf085660a35dc','_blank')">
+        <img src="Basic Robotic Behaviors and Odometry.jpg" alt="Basic Robotic Behaviors (CU Boulder)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Basic Robotic Behaviors and Odometry</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> University of Colorado Boulder</p>
+        <a href="https://coursera.org/share/d0458ddce82d3ec145adf085660a35dc" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IBM, Data Science & ML Certificates Section -->
+<div class="certificate-section" data-category="ibm">
+  <div class="company-header">
+    <i class="fas fa-building"></i>
+    <h2>IBM & Data Science Certifications</h2>
+  </div>
+  <div class="certificate-grid">
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/d4072acafa5ca809c4b8013311fcd517','_blank')">
+        <img src="Supervised ML-Regression-IBM.jpg" alt="Supervised ML: Regression (IBM)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Supervised ML: Regression</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> IBM</p>
+        <a href="https://coursera.org/share/d4072acafa5ca809c4b8013311fcd517" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/fcd2b716183d17a4cc00d9ad881e6e9d','_blank')">
+        <img src="Supervised ML-Classification-IBM.jpg" alt="Supervised ML: Classification (IBM)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Supervised ML: Classification</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> IBM</p>
+        <a href="https://coursera.org/share/fcd2b716183d17a4cc00d9ad881e6e9d" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/f9260cb2f56c1212b232e0e62560cb6f','_blank')">
+        <img src="Intro to AI-IBM.jpg" alt="Introduction to AI (IBM)">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Introduction to AI</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> IBM</p>
+        <a href="https://coursera.org/share/f9260cb2f56c1212b232e0e62560cb6f" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Data Analytics Certificates Section -->
+<div class="certificate-section" data-category="other">
+  <div class="company-header">
+    <i class="fas fa-chart-bar"></i>
+    <h2>Advanced Data Analytics Certifications</h2>
+  </div>
+  <div class="certificate-grid">
+    <div class="certificate-card">
+      <div class="certificate-image" onclick="window.open('https://coursera.org/share/898ccd3f0bddbf120249ec4ca145b863','_blank')">
+        <img src="Google Advanced Data Analytics.jpg" alt="Google Advanced Data Analytics">
+      </div>
+      <div class="certificate-content">
+        <h3 class="certificate-title">Google Advanced Data Analytics</h3>
+        <p class="certificate-date"><i class="far fa-calendar-alt"></i> Google</p>
+        <a href="https://coursera.org/share/898ccd3f0bddbf120249ec4ca145b863" target="_blank" class="view-btn">Verify Certificate</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Modal for displaying certificates -->
+  <div id="certificateModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Certificate">
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                    <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li><a href="../education.html" class="nav-link">Education</a></li>
+                        <li><a href="../achievements.html" class="nav-link">Achievements</a></li>
+                        <li><a href="../projects.html" class="nav-link">Projects</a></li>
+                        <li><a href="../certifications.html" class="nav-link">Certifications</a></li>
+                        <li><a href="certificates.html" class="nav-link active">Certificates</a></li>
+                        <li><a href="../skills.html" class="nav-link">Skills</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+  <!-- JavaScript -->
+  <script src="../script.js"></script>
+  <script>
+    // Function to open modal
+    function openModal(imageSrc) {
+      const modal = document.getElementById('certificateModal');
+      const modalImg = document.getElementById('modalImage');
+      
+      // Set the image source
+      modalImg.src = imageSrc;
+      
+      // Show the modal
+      modal.style.display = 'flex';
+    }
+    
+    // Function to close modal
+    function closeModal() {
+      document.getElementById('certificateModal').style.display = 'none';
+    }
+    
+    // When the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all filter buttons and certificate sections
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const certificateSections = document.querySelectorAll('.certificate-section');
+      
+      // Add click event to each filter button
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Get the filter value (e.g., 'all', 'coursera', 'ibm', 'python', etc.)
+          const filterValue = this.getAttribute('data-filter');
+          
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Show/hide certificate sections based on filter
+          certificateSections.forEach(section => {
+            if (filterValue === 'all' || section.getAttribute('data-category') === filterValue) {
+              section.style.display = 'block';
+            } else {
+              section.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Close the modal when clicking the close button
+      document.querySelector('.close-modal').addEventListener('click', closeModal);
+      
+      // Close the modal when clicking outside of it
+      window.addEventListener('click', function(event) {
+        const modal = document.getElementById('certificateModal');
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

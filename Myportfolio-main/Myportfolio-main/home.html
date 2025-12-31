@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Kasala Pavan Sai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .animated-skill-item {
+            animation: colorPulse 2s infinite alternate;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .animated-skill-item:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes colorPulse {
+            0% {
+                box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+            }
+        }
+
+        .profile-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Kasala Pavan Sai</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container" style="display: flex; align-items: center; gap: 1rem; max-width: 1000px;">
+            <div class="hero-content">
+                <h1 class="hero-title">Kasala Pavan Sai</h1>
+                <h2 class="hero-subtitle">Full-stack Developer & Student</h2>
+                <p class="animate-fadeInUp delay-3">A full-stack developer skilled in Python, Java, and web
+                    technologies. Passionate about building intelligent, user-centric solutions for real-world
+                    challenges.</p>
+                <div class="animate-fadeInUp delay-4">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="projects.html" class="btn btn-outline">See My Work</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image-container">
+                    <img src="profile.jpg" alt="Kasala Pavan Sai">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card animate-fadeInUp">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Profile Details</h3>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td><strong>Phone No:</strong></td>
+                                <td>+91 7013532995</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>pavankasala999@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Location:</strong></td>
+                                <td>Tirupati, Andhra Pradesh</td>
+                            </tr>
+                        </table>
+                        <h3 style="margin-top: 1.5rem;">Objective</h3>
+                        <p>
+                            I am a full-stack developer skilled in Python, Java, and web technologies. I am passionate
+                            about building intelligent, user-centric solutions for real-world challenges. I'm currently
+                            pursuing a B.Tech in Computer Science and Engineering with a specialization in AI & ML.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3>Soft Skills</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                            <li>Problem Solving</li>
+                            <li>Analytical Thinking</li>
+                            <li>Time Management</li>
+                            <li>Communication</li>
+                        </ul>
+                        <h3 style="margin-top: 1.5rem;">Social Media</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                                target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="skills-highlight" style="background-color: rgba(99, 102, 241, 0.05);">
+        <div class="container">
+            <h2 class="section-title">Key Skills</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">A glimpse of my technical expertise.</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <div class="skill-item animated-skill-item">Python</div>
+                <div class="skill-item animated-skill-item">Java</div>
+                <div class="skill-item animated-skill-item">Flask</div>
+                <div class="skill-item animated-skill-item">REST APIs</div>
+                <div class="skill-item animated-skill-item">Git</div>
+                <div class="skill-item animated-skill-item">HTML/CSS</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 2rem; margin-top: 1rem;">
+                <h3 style="margin-bottom: 1rem;">Technical Skills</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+                    <div style="flex: 0 1 150px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Languages</h4>
+                        <p style="font-size: 0.9rem;">Python, Java, HTML, CSS</p>
+                    </div>
+                    <div style="flex: 0 1 150px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">
+                            <i class="fas fa-toolbox"></i>
+                        </div>
+                        <h4>Frameworks/Tools</h4>
+                        <p style="font-size: 0.9rem;">Flask, Git, REST APIs, JSON, Unity, Blender</p>
+                    </div>
+                    <div style="flex: 0 1 150px; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Databases</h4>
+                        <p style="font-size: 0.9rem;">H2 Database</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                    <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                        <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                        <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                        <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                        <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a>
+                        </li>
+                        <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
