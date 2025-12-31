@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Kasala Pavan Sai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --background: #f1f5f9;
+            --card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+        }
+
+        .dark-theme {
+            --background: #0f172a;
+            --card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .certification-card {
+            background: var(--card);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .certification-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certification-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .certification-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certification-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            font-size: 1.25rem;
+            box-shadow: 0 3px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        .certification-content {
+            padding: 1.5rem;
+        }
+
+        .certification-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .certification-issuer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .certification-issuer i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .certification-date {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .certification-date i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .certification-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .certification-skill {
+            font-size: 0.8rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+        }
+
+        .certification-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .certification-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .certification-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        /* Category filters */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            outline: none;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Theme toggle button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        #theme-toggle:hover i {
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Kasala Pavan Sai</a>
+            <nav style="display: flex; align-items: center;">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="education.html" class="nav-link">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certifications.html" class="nav-link active">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+
+                <div style="display: flex; align-items: center; margin-left: auto;">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"
+                        style="margin-right: 10px;">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section"
+        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Professional Certifications</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">A collection
+                of my professional certifications demonstrating my expertise and continuous learning in various domains.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-button active" data-filter="all">All Certifications</button>
+                <button class="filter-button" data-filter="aws">AWS</button>
+                <button class="filter-button" data-filter="servicenow">ServiceNow</button>
+                <button class="filter-button" data-filter="ml">Machine Learning</button>
+            </div>
+
+            <div class="certification-grid">
+                <div class="certification-card" data-category="aws">
+                    <div class="certification-badge"><i class="fas fa-database"></i></div>
+                    <div class="certification-image" onclick="openModal('AWS Academy Data Engineering.jpg')">
+                        <img src="AWS Academy Data Engineering.jpg" alt="AWS Academy Data Engineering Certification">
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Academy Graduate – AWS Academy Data Engineering</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-building"></i> AWS Academy
+                        </div>
+                        <div class="certification-date">
+                            <i class="fas fa-calendar-alt"></i> Issued 2024
+                        </div>
+                        <div class="certification-skills">
+                            <span class="certification-skill">Data Pipelines</span>
+                            <span class="certification-skill">ETL</span>
+                            <span class="certification-skill">AWS Services</span>
+                        </div>
+                        <div class="certification-links">
+                            <a href="https://www.credly.com/badges/896dd4e3-0f7c-4e43-a9d0-056eb1c8811b/public_url-AWS"
+                                target="_blank" class="certification-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                            <span onclick="openModal('AWS Academy Data Engineering.jpg')" class="certification-link">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card" data-category="aws">
+                    <div class="certification-badge"><i class="fas fa-cloud"></i></div>
+                    <div class="certification-image" onclick="openModal('AWS Academy Cloud Foundations.jpg')">
+                        <img src="AWS Academy Cloud Foundations.jpg" alt="AWS Academy Cloud Foundations Certification">
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">AWS Academy Cloud Foundations</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-building"></i> AWS Academy
+                        </div>
+                        <div class="certification-date">
+                            <i class="fas fa-calendar-alt"></i> Issued 2024
+                        </div>
+                        <div class="certification-skills">
+                            <span class="certification-skill">Cloud Computing</span>
+                            <span class="certification-skill">AWS Cloud Concepts</span>
+                                                        <span onclick="openModal('AWS Academy Cloud Foundations.jpg')" class="certification-link">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card" data-category="servicenow">
+                    <div class="certification-badge"><i class="fas fa-cogs"></i></div>
+                    <div class="certification-image" onclick="openModal('servicenow.png')">
+                        <img src="servicenow.png" alt="ServiceNow Application Development Fundamentals Certification">
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">ServiceNow: Application Development Fundamentals</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-building"></i> ServiceNow
+                        </div>
+                        <div class="certification-date">
+                            <i class="fas fa-calendar-alt"></i> Issued 2024
+                        </div>
+                        <div class="certification-skills">
+                            <span class="certification-skill">App Development</span>
+                            <span class="certification-skill">Platform Administration</span>
+                            <span class="certification-skill">Cloud Apps</span>
+                        </div>
+                        <div class="certification-links">
+                            <a href="https://learning.servicenow.com/" target="_blank" class="certification-link">
+                                <i class="fas fa-external-link-alt"></i> Verify
+                            </a>
+                            <span onclick="openModal('servicenow.png')" class="certification-link">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card" data-category="ml">
+                    <div class="certification-badge"><i class="fas fa-trophy"></i></div>
+                    <div class="certification-image" onclick="openModal('NeoCodeathonFinals.jpg')">
+                        <img src="NeoCodeathonFinals.jpg" alt="NeoCodeathon Top 25 Performers">
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Top 25 Performers – NeoCodeathon Finals</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-building"></i> NeoCodeathon
+                        </div>
+                        <div class="certification-date">
+                            <i class="fas fa-calendar-alt"></i> Achieved 2024
+                        </div>
+                        <div class="certification-skills">
+                            <span class="certification-skill">Problem Solving</span>
+                            <span class="certification-skill">Algorithms</span>
+                            <span class="certification-skill">Team Performance</span>
+                        </div>
+                        <div class="certification-links">
+                            <span onclick="openModal('NeoCodeathonFinals.jpg')" class="certification-link">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="certificateModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Certificate">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                    <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link"
+                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                        <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                        <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                        <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                        <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                        <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modalImage');
+
+            modalImg.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const certificationCards = document.querySelectorAll('.certification-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    certificationCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Close modal when clicking outside the image
+            window.addEventListener('click', (event) => {
+                const modal = document.getElementById('certificateModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('show');
+                });
+            }
+
+            // Theme toggle setup
+            setupThemeToggle();
+        });
+
+        // THEME TOGGLE FUNCTIONALITY
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                // Default to dark theme
+                const savedTheme = localStorage.getItem('dark-theme');
+                if (savedTheme === null || savedTheme === 'true') {
+                    document.body.classList.add('dark-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('dark-theme', 'true');
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+                
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-theme');
+                    const isDarkTheme = document.body.classList.contains('dark-theme');
+                    localStorage.setItem('dark-theme', isDarkTheme);
+                    themeToggle.innerHTML = isDarkTheme ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

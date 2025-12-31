@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Peta Hema Sai Reddy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .education-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+        
+        .education-timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 6px;
+            z-index: 0;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            animation-duration: 0.8s;
+            margin-bottom: 3rem;
+            z-index: 1;
+        }
+        
+        .timeline-container.left {
+            left: 0;
+        }
+        
+        .timeline-container.right {
+            left: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background: var(--primary);
+            border: 4px solid white;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+        
+        .timeline-container.right::after {
+            left: -13px;
+        }
+        
+        .education-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+        }
+        
+        .date-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-bottom-right-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .education-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-top: 1.5rem;
+        }
+        
+        .education-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .education-icon i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .education-title {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+        
+        .education-subtitle {
+            color: var(--text-secondary);
+            margin: 0.25rem 0 0 0;
+            font-size: 1rem;
+        }
+        
+        .education-details {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .certificate-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        }
+        
+        .certificate-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .view-certificate {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(99, 102, 241, 0.9);
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.8rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-item:hover .view-certificate {
+            transform: translateY(0);
+        }
+        
+        .achievements-list {
+            margin-top: 1rem;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .achievement-item i {
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .education-timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0;
+            }
+            
+            .timeline-container.right {
+                left: 0;
+            }
+            
+            .timeline-container.left::after, 
+            .timeline-container.right::after {
+                left: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">Kasala Pavan Sai</a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link ">Home</a></li>
+                    <li><a href="education.html" class="nav-link active">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Education Journey</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">My academic background and qualifications that have shaped my knowledge and expertise in AIML and related technologies.</p>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section class="section">
+        <div class="container">
+            <div class="education-timeline">
+                <!-- B.Tech - Current Education -->
+                <div class="timeline-container left animate-fadeInUp">
+                    <div class="education-card">
+                        <div class="date-badge">2022 - Present</div>
+                        <div class="education-header">
+                            <div class="education-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="education-title">B.Tech in AI & Machine Learning</h3>
+                                <p class="education-subtitle">Mohan Babu University</p>
+                            </div>
+                        </div>
+                        
+                        <div class="education-details">
+                            <p>Currently pursuing my B.Tech in Artificial Intelligence and Machine Learning, I am in my 3rd year of study. The program includes advanced skills in AI technologies, machine learning algorithms, and hands-on projects to prepare for real-world applications.</p>
+                            <p><strong>Current CGPA:</strong> 8.83</p>
+                        </div>
+                        
+                        <div class="achievements-list">
+                            <h4>Key Achievements:</h4>
+                            <div class="achievement-item">
+                                <i class="fas fa-users"></i>
+                                <span>Served as Club Leader, demonstrating leadership skills</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Completed various certifications to enhance technical knowledge</span>
+                            </div>
+                        </div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Semester Results:</h4>
+                        <div class="certificate-grid">
+                            <div class="certificate-item" onclick="openModal('MBU SEM(1).jpg')">
+                                <img src="MBU SEM(1).jpg" alt="Semester 1 Results" class="certificate-image">
+                                <div class="view-certificate">Semester 1</div>
+                            </div>
+                            <div class="certificate-item" onclick="openModal('MBU SEM(2).jpg')">
+                                <img src="MBU SEM(2).jpg" alt="Semester 2 Results" class="certificate-image">
+                                <div class="view-certificate">Semester 2</div>
+                            </div>
+                            <div class="certificate-item" onclick="openModal('MBU SEM(3).jpg')">
+                                <img src="MBU SEM(3).jpg" alt="Semester 3 Results" class="certificate-image">
+                                <div class="view-certificate">Semester 3</div>
+                            </div>
+                            <div class="certificate-item" onclick="openModal('MBU SEM(4).jpg')">
+                                <img src="MBU SEM(4).jpg" alt="Semester 4 Results" class="certificate-image">
+                                <div class="view-certificate">Semester 4</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Intermediate Education -->
+                <div class="timeline-container right animate-fadeInUp delay-1">
+                    <div class="education-card">
+                        <div class="date-badge">2020 - 2022</div>
+                        <div class="education-header">
+                            <div class="education-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <div>
+                                <h3 class="education-title">Senior Secondary Education (12th Grade)</h3>
+                                <p class="education-subtitle">Sri Chaitanya Junior College, Bapatla</p>
+                            </div>
+                        </div>
+                        
+                        <div class="education-details">
+                            <p>I completed my Senior Secondary Education at Sri Chaitanya Junior College, Bapatla, Guntur District, Andhra Pradesh, India, following the  curriculum from 2020 to 2022.</p>
+                            <p>I studied in the MPC (Mathematics, Physics, Chemistry) stream, gaining a deeper understanding of core scientific principles and mathematics which built a strong foundation for my engineering studies.</p>
+                        </div>
+                        
+                        <div class="achievements-list">
+                            <h4>Key Learnings:</h4>
+                            <div class="achievement-item">
+                                <i class="fas fa-square-root-alt"></i>
+                                <span>Advanced Mathematics including Calculus and Statistics</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-atom"></i>
+                                <span>Physics concepts relevant to engineering applications</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-flask"></i>
+                                <span>Chemistry principles for understanding material properties</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="certificate-item" onclick="openModal('12th.jpg')">
+                                <img src="12th.jpg" alt="12th Grade Certificate" class="certificate-image" style="height: 150px;">
+                                <div class="view-certificate">View Certificate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary Education -->
+                <div class="timeline-container left animate-fadeInUp delay-2">
+                <div class="education-card">
+                    <div class="date-badge">2019–2020</div>
+                    <div class="education-header">
+                    <div class="education-icon"><i class="fas fa-book-reader"></i></div>
+                    <div>
+                        <h3 class="education-title">Secondary Education (10th Grade)</h3>
+                        <p class="education-subtitle">Sri Chaitanya Educational Institutions, Bapatla (BSEAP)</p>
+                    </div>
+                    </div>
+                    <div class="education-details">
+                    <p>Completed SSC (Secondary School Certificate) under the Board of Secondary Education, Andhra Pradesh. Secured <strong>597/600 marks</strong>, achieving <strong>10.0 GPA (A1 Grade)</strong>.</p>
+                    </div>
+                    <div class="achievements-list">
+                    <h4>Academic Highlights:</h4>
+                    <div class="achievement-item"><i class="fas fa-star"></i> Scored 597/600 marks in SSC Board Exams</div>
+                    <div class="achievement-item"><i class="fas fa-trophy"></i> Awarded 10 GPA (A1 Grade) for outstanding performance</div>
+                    <div class="achievement-item"><i class="fas fa-lightbulb"></i> Built a strong foundation in Mathematics and Science</div>
+                    </div>
+                        <div class="certificate-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="certificate-item" onclick="openModal('10th.jpg')">
+                                <img src="10th.jpg" alt="10th Grade Certificate" class="certificate-image" style="height: 150px;">
+                                <div class="view-certificate">View Certificate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for displaying certificates -->
+    <div id="certificateModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Certificate">
+        </div>
+    </div>
+    <!--Footer-->
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">Kasala Pavan Sai</h3>
+                <p>Full-stack developer passionate about building intelligent, user-centric solutions.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/pavan-kasala-3499a8272/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Pavankasala" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="footer-link"><a href="education.html" class="nav-link">Education</a></li>
+                    <li class="footer-link"><a href="achievements.html" class="nav-link">Achievements</a></li>
+                    <li class="footer-link"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="footer-link"><a href="certifications.html" class="nav-link">Certifications</a></li>
+                    <li class="footer-link"><a href="remain/certificates.html" class="nav-link">Certificates</a></li>
+                    <li class="footer-link"><a href="skills.html" class="nav-link">Skills</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Contact</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><i class="fas fa-envelope"></i> pavankasala999@gmail.com</li>
+                    <li class="footer-link"><i class="fas fa-phone"></i> +91 7013532995</li>
+                    <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Tirupati, Andhra Pradesh</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kasala Pavan Sai. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = imageSrc;
+            modal.style.display = 'flex';
+            
+            // Prevent scrolling on body when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside the image
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('certificateModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
